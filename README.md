@@ -11,28 +11,30 @@ machine , Decision tree and everytime after doing some preprocessing on the data
   <caption> Observation </caption>
   <tr>
     <td>
-    <\td>
+      Parameter
+    </td>
     <td>
       Support vector Machine
     </td>
     <td>
       Gaussian Naive Bayes
-    </td><td>
+    </td>
+    <td>
       Decision tree Classifier
     </td>  
-  <\tr>   
+  </tr>   
   <tr>
     <td>
       Accuracy_Score
     </td>
     <td>
       0.966666666667
-    <td>
-    <td>
-      0.966666666667
-    <td>
+    </td>
     <td>
       0.966666666667
-    <td>  
+    </td>
+    <td>
+      0.966666666667
+    </td>  
   </tr>  
-<\table>  
+</table>  
