@@ -95,14 +95,14 @@ for i in range(0,91):
     Feature_train.append([d[i][0],d[i][1]])
     if labels_train[i]==Flowers[0]:
          pass
-        #plt.plot(d[i][0],d[i][1],color="r",marker='x')
+         plt.plot(d[i][0],d[i][1],color="r",marker='x')
     if labels_train[i]==Flowers[1]:
          pass
-        #plt.plot(d[i][0],d[i][1],color="b",marker='x')
+         plt.plot(d[i][0],d[i][1],color="b",marker='x')
     if labels_train[i]==Flowers[2]:
          pass
-        #plt.plot(d[i][0],d[i][1],color="g",marker='x')
-#plt.show() ##Gives a clear Idea of data
+         plt.plot(d[i][0],d[i][1],color="g",marker='x')
+plt.show() ##Gives a clear Idea of data
 '''
      Prediciting accuracy of various machine learning models on the data set
 '''

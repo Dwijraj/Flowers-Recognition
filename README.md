@@ -44,6 +44,12 @@ machine , Decision tree and everytime after doing some preprocessing on the data
   unlike previous step this time we convert our 4 feature data into a 2 feature using PCA and then we visualize our data
   then we split our data in 60:40 ratio for training and testing set respectively and simply feed the data into Support Vector Machine 
   GaussianNB and Decision tree we get the following metrics we sure sklearn.metrics module to get these data </p>
+  
+  <div class="Image">
+	<img src="Figure_1.png" alt="image_not_found"/>
+	<h5> Scatter plot with newly modified features from PCA </h5>
+  </div>
+  
 <table>
   <caption> Observation </caption>
   <tr>
