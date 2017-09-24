@@ -3,3 +3,36 @@ A small machine learning project in python that helps to classify a flower based
 In this project we process our data and then feed them on three famous unsupervised algorithms mainly Gaussian Naive Bayes, Support Vector
 machine , Decision tree and everytime after doing some preprocessing on the data we record our observation of the data on each algorithm
 <strong><h1> Simply Extracting the Data </h1><strong> 
+  <h3> First_script.py </h3>
+  In this script we simply load the data from data_set.txt extract our data and then seperate the features from the labels
+  then we split our data in 60:40 ratio for training and testing set respectively and simply feed the data into Support Vector Machine 
+  GaussianNB and Decision tree we get the following metrics we sure sklearn.metrics module to get these data 
+<table>
+  <caption> Observation </caption>
+  <tr>
+    <td>
+    <\td>
+    <td>
+      Support vector Machine
+    </td>
+    <td>
+      Gaussian Naive Bayes
+    </td><td>
+      Decision tree Classifier
+    </td>  
+  <\tr>   
+  <tr>
+    <td>
+      Accuracy_Score
+    </td>
+    <td>
+      0.966666666667
+    <td>
+    <td>
+      0.966666666667
+    <td>
+    <td>
+      0.966666666667
+    <td>  
+  </tr>  
+<\table>  
