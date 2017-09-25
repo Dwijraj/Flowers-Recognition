@@ -147,7 +147,7 @@ machine , Decision tree and everytime after doing some preprocessing on the data
   GaussianNB and Decision tree we get the following metrics we sure sklearn.metrics module to get these data </p>
   
   <div class="Image">
-	<img src="Figure_3.png" alt="image_not_found"/>
+	<img src="Figure_2.png" alt="image_not_found"/>
 	<h5> Scatter plot with newly modified features from PCA </h5>
   </div>
   
