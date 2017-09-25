@@ -1,6 +1,12 @@
 ### Checking variance of data and see if we need to do any sort of feature scaling
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.svm import SVC
+from sklearn.decomposition import PCA
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score
+from sklearn.metrics import precision_score
+from sklearn.metrics import recall_score
+import matplotlib.pyplot as plt
 import pandas
 d=pandas.read_csv("data_set.txt")
 #print d
@@ -73,70 +79,93 @@ for data_1 in label[81:101]:
      labels_test.append(data_1)
 for data_1 in label[131:]:
      labels_test.append(data_1)
-'''---
-Applying PCA
-----'''
-#print features_train
-#print labels_train
-import numpy as np
-from sklearn.decomposition import PCA
-pca=PCA(n_components=2)
-pca.fit(np.array(features_train))
-d=pca.transform(np.array(features_train))
 
-#First=d.components_[0]
-#Second=d.components_[1]
+''''----- Splitting data into testing and training set-----'''
+sepal_1=[]
+sepal_2=[]
+petal_1=[]
+petal_2=[]
+for data in features_train:
+    sepal_1.append(data[0])
+    sepal_2.append(data[1])
+    petal_1.append(data[2])
+    petal_2.append(data[3])
 
-import matplotlib.pyplot as plt
+Sepal_Combined=[]
+Petal_Combined=[]
 
+for i in range(0,len(sepal_1)):
+    Sepal_Combined.append([sepal_1[i],sepal_2[i]])
+for i in range(0,len(petal_1)):
+    Petal_Combined.append([petal_1[i],petal_2[i]])
+''''------------Extraction sepal parameters and petal parameters------------'''
+pca_Sepal=PCA(n_components=1)
+pca_Petal=PCA(n_components=1)
+
+pca_Sepal.fit(Sepal_Combined)
+pca_Petal.fit(Petal_Combined)
+
+Sepal_train=pca_Sepal.transform(Sepal_Combined)
+Petal_train=pca_Petal.transform(Petal_Combined)
+
+#print Sepal_train
+
+'''-----Visualizing the data ------------'''
 Flowers=['Iris-setosa','Iris-versicolor','Iris-virginica']
 Feature_train=[]
-for i in range(0,91):
-    Feature_train.append([d[i][0],d[i][1]])
+for i in range(0,len(Sepal_train)):
+    Feature_train.append([Sepal_train[i][0],Petal_train[i][0]])
     if labels_train[i]==Flowers[0]:
          pass
-         plt.plot(d[i][0],d[i][1],color="r",marker='x')
+         plt.plot(Sepal_train[i],Petal_train[i],color="r",marker='x')
     if labels_train[i]==Flowers[1]:
          pass
-         plt.plot(d[i][0],d[i][1],color="b",marker='x')
+         plt.plot(Sepal_train[i],Petal_train[i],color="b",marker='x')
     if labels_train[i]==Flowers[2]:
          pass
-         plt.plot(d[i][0],d[i][1],color="g",marker='x')
-plt.xlabel("PC 1")
-plt.ylabel("PC 2")
-plt.show() ##Gives a clear Idea of data
-'''
-     Prediciting accuracy of various machine learning models on the data set
-'''
+         plt.plot(Sepal_train[i],Petal_train[i],color="g",marker='x')
+plt.xlabel("Sepal")
+plt.ylabel("Petal")
+plt.show()
 
-#for model in List_Models:
+#print Feature_train
+'''-- Converting test data into PCA -----'''
+sepal_1=[]
+sepal_2=[]
+petal_1=[]
+petal_2=[]
+for data in features_test:
+    sepal_1.append(data[0])
+    sepal_2.append(data[1])
+    petal_1.append(data[2])
+    petal_2.append(data[3])
+
+Sepal_Combined=[]
+Petal_Combined=[]
+
+for i in range(0,len(sepal_1)):
+    Sepal_Combined.append([sepal_1[i],sepal_2[i]])
+for i in range(0,len(petal_1)):
+    Petal_Combined.append([petal_1[i],petal_2[i]])
+
+Sepal_test=pca_Sepal.transform(Sepal_Combined)
+Petal_test=pca_Petal.transform(Petal_Combined)
+Features_test=[]
+for i in range(0,len(Sepal_test)):
+    Features_test.append([Sepal_test[i][0],Petal_test[i][0]])
+   
+'''-----Evalutaion of the data--------'''
 def Show_Accuracy(clf):
      clf.fit(Feature_train,labels_train)
 
-     Features_test=[]
-     test_data=pca.transform(np.array(features_test))
-     for i in range(0,60):
-          Features_test.append([test_data[i][0],test_data[i][1]])
      from sklearn.metrics import accuracy_score
      from sklearn.metrics import precision_score
      from sklearn.metrics import recall_score
-     print 
      print "Accuracy",accuracy_score(clf.predict(Features_test),labels_test),"Precision",precision_score(clf.predict(Features_test),labels_test,average='macro'),"Recall",recall_score(clf.predict(Features_test),labels_test,average='macro')
-
-from sklearn.naive_bayes import GaussianNB
+     
 for model in [SVC(),GaussianNB(),DecisionTreeClassifier()]:
      clf=model
      Show_Accuracy(clf)
-
-
-
-
-
-
-
-
-
-
 
 
 
