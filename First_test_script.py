@@ -82,5 +82,7 @@ from sklearn.svm import SVC
 for models in [SVC(),GaussianNB(),DecisionTreeClassifier()]:
      clf=models
      from sklearn.metrics import accuracy_score
+     from sklearn.metrics import recall_score
+     from sklearn.metrics import precision_score
      clf.fit(np.array(features_train),np.array(labels_train))
-     print "Accuracy",accuracy_score(clf.predict(np.array(features_test)),np.array(labels_test))
+     print "Accuracy",accuracy_score(clf.predict(np.array(features_test)),np.array(labels_test)),"Precision",precision_score(clf.predict(np.array(features_test)),np.array(labels_test),average='macro'),"Recall",precision_score(clf.predict(np.array(features_test)),np.array(labels_test),average='macro')

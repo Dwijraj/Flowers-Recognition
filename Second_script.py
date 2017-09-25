@@ -116,8 +116,10 @@ def Show_Accuracy(clf):
      for i in range(0,60):
           Features_test.append([test_data[i][0],test_data[i][1]])
      from sklearn.metrics import accuracy_score
-     print "Accuracy",accuracy_score(clf.predict(Features_test),labels_test)
-
+     from sklearn.metrics import precision_score
+     from sklearn.metrics import recall_score
+     print 
+     print "Accuracy",accuracy_score(clf.predict(Features_test),labels_test),"Precision",precision_score(clf.predict(Features_test),labels_test,average='macro'),"Recall",recall_score(clf.predict(Features_test),labels_test,average='macro')
 
 from sklearn.naive_bayes import GaussianNB
 for model in [SVC(),GaussianNB(),DecisionTreeClassifier()]:
